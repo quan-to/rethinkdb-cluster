@@ -6,4 +6,4 @@ RUN apt update && apt install -y curl && rm -rf /var/lib/apt/lists/*
 COPY main.sh /main/sh
 COPY proxy.sh /proxy.sh
 
-RUN /main.sh
+CMD /main.sh
