@@ -3,7 +3,11 @@
 url='http://rancher-metadata/2015-12-19'
 uuid=$(curl -s "$url/self/container/uuid/")
 name=$(curl -s "$url/self/container/name/")
-cmd="rethinkdb -n \"${name}\" --bind all"
+ip=$(curl -s "$url/self/container/ips/0")
+
+echo "Starting instance ${name} with IP ${ip}"
+
+cmd="rethinkdb -n \"${name}\" --canonical-address ${ip} --bind all"
 
 sleep_time=$(( ( RANDOM % 10 )  + 1 ))
 
