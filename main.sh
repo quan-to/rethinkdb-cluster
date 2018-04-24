@@ -11,7 +11,7 @@ labels=$(curl -s "$url/self/host/labels")
 
 echo "Starting instance ${name} with IP ${ip}"
 
-cmd="rethinkdb -n \"${name}\" --canonical-address ${ip} --cluster-reconnect-timeout 60 --bind all"
+cmd="rethinkdb -n ${name} --canonical-address ${ip} --cluster-reconnect-timeout 60 --bind all"
 
 for label in $labels
 do
