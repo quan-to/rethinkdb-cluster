@@ -4,7 +4,7 @@ TAG_PREFIX=${TAG_PREFIX:-"tag_"}
 
 url='http://rancher-metadata/2015-12-19'
 uuid=$(curl -s "$url/self/container/uuid/")
-name=$(curl -s "$url/self/container/name/")
+name=$(curl -s "$url/self/container/name/" | sed 's/-/_/g')
 ip=$(curl -s "$url/self/container/ips/0")
 
 labels=$(curl -s "$url/self/host/labels")
