@@ -9,9 +9,11 @@ ip=$(curl -s "$url/self/container/ips/0")
 
 labels=$(curl -s "$url/self/host/labels")
 
+MAX_MEMORY=${MAX_MEMORY:-"1024"}
+
 echo "Starting instance ${name} with IP ${ip}"
 
-cmd="rethinkdb -n ${name} --canonical-address ${ip} --cluster-reconnect-timeout 60 --bind all"
+cmd="rethinkdb -n ${name} --canonical-address ${ip} --cluster-reconnect-timeout 60 --cache-size ${MAX_MEMORY} --bind all"
 
 for label in $labels
 do

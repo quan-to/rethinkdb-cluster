@@ -10,4 +10,7 @@ COPY proxy.sh /proxy.sh
 RUN chmod +x /main.sh
 RUN chmod +x /proxy.sh
 
+ENV MAX_MEMORY 2048
+ENV TAG_PREFIX tag_
+
 CMD /main.sh
